@@ -181,12 +181,17 @@ export default function Home() {
     const bCols = b.columns.map((c) => c.toLowerCase()).sort();
     if (!aCols.every((c, i) => c === bCols[i])) return false;
 
-    // NULL を空文字と区別するセンチネル、数値は10桁精度に丸めて浮動小数点誤差を吸収
+    // NULL を空文字と区別するセンチネル
+    // 整数表記（小数点なし）はそのまま比較し、小数は10桁精度に丸めて浮動小数点誤差を吸収
+    // これにより ROUND なしの AVG 結果("83000.0000000000")と整数("83000")を区別できる
     const normalizeVal = (val: unknown): string => {
       if (val === null || val === undefined) return "\x00NULL\x00";
       const str = String(val).trim();
       const num = Number(str);
-      if (str !== "" && isFinite(num)) return num.toPrecision(10);
+      if (str !== "" && isFinite(num)) {
+        if (!str.includes(".")) return str;
+        return num.toPrecision(10);
+      }
       return str;
     };
 
