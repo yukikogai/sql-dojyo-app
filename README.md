@@ -10,7 +10,7 @@
 
 - **ブラウザ内 PostgreSQL 実行** — [PGlite](https://github.com/electric-sql/pglite) (WASM) により、サーバーなしで本物の PostgreSQL 構文を実行
 - **自動正誤判定** — 期待クエリと結果を比較し、カラム順・NULL・浮動小数点誤差を考慮して判定
-- **全20問** — 易・中・難の3段階、SELECT から ウィンドウ関数・CTE まで段階的に学習
+- **全40問** — 易・中・難の3段階、SELECT から ウィンドウ関数・再帰CTE・LATERAL まで段階的に学習
 - **リッチなエディタ** — シンタックスハイライト・キーワード補完・エラー下線表示
 - **左右2ペイン表示** — 問題文とテーブル定義を並べて確認しながら解答
 - **復習マーク** — 後で見直したい問題にブックマークを付けられる
@@ -26,8 +26,8 @@
 | 難易度 | 問題数 | 扱うトピック |
 |--------|--------|-------------|
 | 易     | 4問    | SELECT、WHERE、ORDER BY / LIMIT、GROUP BY |
-| 中     | 10問   | JOIN、集計関数、サブクエリ、CASE WHEN、HAVING、CTE |
-| 難     | 6問    | ウィンドウ関数（RANK / DENSE_RANK / ROW_NUMBER / LAG / SUM OVER）、複合CTE |
+| 中     | 14問   | JOIN、集計関数、サブクエリ、CASE WHEN、HAVING、CTE、EXISTS、STRING_AGG、FILTER |
+| 難     | 22問   | ウィンドウ関数（RANK / DENSE_RANK / ROW_NUMBER / LAG / LEAD / NTILE / FIRST_VALUE / PERCENT_RANK / CUME_DIST / PERCENTILE_CONT）、再帰CTE、LATERAL JOIN、複合CTE |
 
 ## 技術スタック
 
