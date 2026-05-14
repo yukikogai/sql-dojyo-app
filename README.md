@@ -19,13 +19,7 @@
 
 ## スクリーンショット
 
-### メイン画面（ライトモード）
-
-![SQL道場 メイン画面](public/screenshots/overview-light.png)
-
-### SQL実行・正解判定（ダークモード）
-
-![SQL道場 正解画面](public/screenshots/correct-answer.png)
+![SQL道場](public/screenshots/screenshot.png)
 
 ## 問題一覧
 
