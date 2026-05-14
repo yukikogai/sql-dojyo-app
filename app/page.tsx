@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { CheckCircle2, Lightbulb, Moon, Play, RotateCcw, Sun, WandSparkles, XCircle } from "lucide-react";
+import { CheckCircle2, KeySquare, Lightbulb, Moon, Play, RotateCcw, Sun, WandSparkles, XCircle } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import ReactMarkdown from "react-markdown";
@@ -35,6 +35,7 @@ export default function Home() {
   const [review, setReview] = useState<Review>({});
   const [showHint, setShowHint] = useState(false);
   const [hintIndex, setHintIndex] = useState(0);
+  const [showSolution, setShowSolution] = useState(false);
   const [isDbReady, setIsDbReady] = useState(false);
   const [db, setDb] = useState<PGliteInstance>(null);
 
@@ -80,6 +81,7 @@ export default function Home() {
     setJudgeStatus(null);
     setShowHint(false);
     setHintIndex(0);
+    setShowSolution(false);
     setSql("");
     editorRef.current?.clearError();
 
@@ -284,38 +286,72 @@ export default function Home() {
                 <div className="px-5 py-4 prose prose-sm dark:prose-invert max-w-none prose-table:text-sm">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{taskDesc}</ReactMarkdown>
                 </div>
-                {currentProblem.hints.length > 0 && (
-                  <div className="px-5 pb-5">
-                    <Separator className="mb-4" />
-                    {!showHint ? (
+                <div className="px-5 pb-5 space-y-4">
+                  {currentProblem.hints.length > 0 && (
+                    <div>
+                      <Separator className="mb-4" />
+                      {!showHint ? (
+                        <button
+                          onClick={() => setShowHint(true)}
+                          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-amber-500 transition-colors"
+                        >
+                          <Lightbulb className="w-3.5 h-3.5" />
+                          ヒントを見る
+                        </button>
+                      ) : (
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-1.5 text-xs font-medium text-amber-500">
+                            <Lightbulb className="w-3.5 h-3.5" />
+                            ヒント {hintIndex + 1} / {currentProblem.hints.length}
+                          </div>
+                          <div className="bg-amber-500/5 border border-amber-500/20 rounded-lg px-3 py-2.5 text-sm">
+                            {currentProblem.hints[hintIndex]}
+                          </div>
+                          {hintIndex < currentProblem.hints.length - 1 && (
+                            <button
+                              onClick={() => setHintIndex((i) => i + 1)}
+                              className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                              次のヒントを見る →
+                            </button>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* 正解例 */}
+                  <div>
+                    {currentProblem.hints.length === 0 && <Separator className="mb-4" />}
+                    {!showSolution ? (
                       <button
-                        onClick={() => setShowHint(true)}
-                        className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-amber-500 transition-colors"
+                        onClick={() => setShowSolution(true)}
+                        className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-blue-500 transition-colors"
                       >
-                        <Lightbulb className="w-3.5 h-3.5" />
-                        ヒントを見る
+                        <KeySquare className="w-3.5 h-3.5" />
+                        正解例を見る
                       </button>
                     ) : (
                       <div className="space-y-2">
-                        <div className="flex items-center gap-1.5 text-xs font-medium text-amber-500">
-                          <Lightbulb className="w-3.5 h-3.5" />
-                          ヒント {hintIndex + 1} / {currentProblem.hints.length}
-                        </div>
-                        <div className="bg-amber-500/5 border border-amber-500/20 rounded-lg px-3 py-2.5 text-sm">
-                          {currentProblem.hints[hintIndex]}
-                        </div>
-                        {hintIndex < currentProblem.hints.length - 1 && (
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-xs font-medium text-blue-500">
+                            <KeySquare className="w-3.5 h-3.5" />
+                            正解例
+                          </div>
                           <button
-                            onClick={() => setHintIndex((i) => i + 1)}
+                            onClick={() => { setSql(currentProblem.solution); setShowSolution(false); }}
                             className="text-xs text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            次のヒントを見る →
+                            エディタに貼り付け →
                           </button>
-                        )}
+                        </div>
+                        <pre className="bg-blue-500/5 border border-blue-500/20 rounded-lg px-3 py-2.5 text-xs font-mono whitespace-pre-wrap break-all">
+                          {currentProblem.solution}
+                        </pre>
                       </div>
                     )}
                   </div>
-                )}
+                </div>
               </ScrollArea>
 
               {/* 右: テーブル定義 */}
