@@ -85,9 +85,9 @@ export function TableViewer({ db, tableNames }: TableViewerProps) {
                   <table className="min-w-full text-sm border-collapse">
                     <thead>
                       <tr className="bg-muted/50">
-                        {table.columns.map((col) => (
+                        {table.columns.map((col, colIndex) => (
                           <th
-                            key={col}
+                            key={colIndex}
                             className="text-left px-3 py-2 text-xs font-medium text-muted-foreground border border-border whitespace-nowrap"
                           >
                             {col}
@@ -98,9 +98,9 @@ export function TableViewer({ db, tableNames }: TableViewerProps) {
                     <tbody>
                       {table.rows.map((row, i) => (
                         <tr key={i} className="hover:bg-muted/30">
-                          {table.columns.map((col) => (
+                          {table.columns.map((col, colIndex) => (
                             <td
-                              key={col}
+                              key={colIndex}
                               className="px-3 py-1.5 border border-border font-mono text-xs whitespace-nowrap"
                             >
                               {row[col] === null ? (

@@ -60,9 +60,9 @@ export function ResultTable({ result, isRunning }: ResultTableProps) {
           <table className="min-w-full text-sm border-collapse">
             <thead>
               <tr className="bg-muted/50">
-                {result.columns.map((col) => (
+                {result.columns.map((col, colIndex) => (
                   <th
-                    key={col}
+                    key={colIndex}
                     className="text-left px-3 py-2 text-xs font-medium text-muted-foreground border border-border"
                   >
                     {col}
@@ -73,9 +73,9 @@ export function ResultTable({ result, isRunning }: ResultTableProps) {
             <tbody>
               {result.rows.map((row, i) => (
                 <tr key={i} className="hover:bg-muted/30">
-                  {result.columns.map((col) => (
+                  {result.columns.map((col, colIndex) => (
                     <td
-                      key={col}
+                      key={colIndex}
                       className="px-3 py-1.5 border border-border font-mono text-xs"
                     >
                       {row[col] === null ? (
