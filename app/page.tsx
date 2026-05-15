@@ -348,6 +348,11 @@ export default function Home() {
                         <pre className="bg-blue-500/5 border border-blue-500/20 rounded-lg px-3 py-2.5 text-xs font-mono whitespace-pre-wrap break-all">
                           {currentProblem.solution}
                         </pre>
+                        {currentProblem.explanation && (
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            {currentProblem.explanation}
+                          </p>
+                        )}
                       </div>
                     )}
                   </div>

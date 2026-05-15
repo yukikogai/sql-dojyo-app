@@ -6,6 +6,7 @@ export interface Problem {
   schema: string;
   solution: string;
   hints: string[];
+  explanation?: string; // 正解例の解説
   ordered?: boolean; // 順序を考慮して正誤判定するか
 }
 
