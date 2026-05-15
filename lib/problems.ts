@@ -169,7 +169,7 @@ export const problems: Problem[] = [
   // ── EASY ────────────────────────────────────────────────────────────────
   {
     id: "p01",
-    title: "従業員の名前と部署を取得",
+    title: "全従業員の氏名と所属部署を確認したい",
     description: `\`employees\` テーブルから、すべての従業員の名前と部署を取得してください。
 
 ### テーブル: employees
@@ -188,7 +188,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p02",
-    title: "給与60,000円以上の従業員",
+    title: "給与が一定額以上の従業員を絞り込みたい",
     description: `\`employees\` テーブルから、給与が 60,000円以上 の従業員を全カラム取得してください。
 
 ### テーブル: employees
@@ -207,7 +207,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p03",
-    title: "給与が高い上位3人",
+    title: "給与トップ3の従業員を調べたい",
     description: `\`employees\` テーブルから、給与の高い順に上位3人の名前と給与を取得してください。
 
 ### テーブル: employees
@@ -227,7 +227,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p04",
-    title: "部署ごとの従業員数",
+    title: "部署ごとに何人いるか集計したい",
     description: `\`employees\` テーブルから、部署ごとの従業員数を求めてください。
 結果のカラム名は \`department\`、\`count\` とすること。
 
@@ -249,7 +249,7 @@ export const problems: Problem[] = [
   // ── MEDIUM ───────────────────────────────────────────────────────────────
   {
     id: "p05",
-    title: "顧客と注文商品のJOIN",
+    title: "どの顧客がどの商品を注文したか一覧で見たい",
     description: `どの顧客がどの商品を注文したか、顧客名と商品名の一覧を取得してください。
 
 ### テーブル: customers
@@ -275,7 +275,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p06",
-    title: "顧客ごとの注文合計金額",
+    title: "顧客ごとの注文合計金額を集計したい",
     description: `顧客ごとの注文合計金額を求め、顧客名の昇順で表示してください。
 合計金額のカラム名は \`total\` とすること。
 
@@ -304,7 +304,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p07",
-    title: "平均給与より高い従業員",
+    title: "社内平均を上回る給与の従業員を探したい",
     description: `全従業員の平均給与を上回る給与をもらっている従業員の名前と給与を取得してください。
 
 ### テーブル: employees
@@ -323,7 +323,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p08",
-    title: "部署内給与ランキング",
+    title: "部署内での給与順位を全員分付けたい",
     description: `各従業員の名前・部署・給与と、部署内での給与順位（\`rank\`）を表示してください。
 同じ給与には同じ順位を付け、次の順位は詰めないこと。
 
@@ -347,7 +347,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p09",
-    title: "CASE WHEN で給与レベルを分類",
+    title: "給与を高・中・低の3段階に分類したい",
     description: `各従業員の名前・給与と、給与水準を示す \`level\` を給与の高い順に表示してください。
 
 - 80,000以上 → 高
@@ -375,7 +375,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p10",
-    title: "平均給与65,000円以上の部署",
+    title: "平均給与が基準を超える部署を絞り込みたい",
     description: `平均給与が65,000円以上の部署と、その平均給与（\`avg_salary\`、整数値）を求めてください。
 平均給与の高い順に並べること。
 
@@ -401,7 +401,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p11",
-    title: "一度も注文していない顧客",
+    title: "一度も注文したことがない顧客を洗い出したい",
     description: `一度も注文実績のない顧客の名前を取得してください。
 
 ### テーブル: customers
@@ -432,7 +432,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p12",
-    title: "2件以上注文した顧客",
+    title: "リピート注文がある顧客と注文回数を確認したい",
     description: `2回以上注文している顧客の名前と注文件数を求めてください。
 注文件数のカラム名は \`order_count\` とすること。
 
@@ -464,7 +464,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p13",
-    title: "カテゴリ別売上合計",
+    title: "商品カテゴリ別の売上金額を比較したい",
     description: `カテゴリ別の売上合計金額（\`total\`）を求め、金額の高い順に表示してください。
 
 ### テーブル: products
@@ -496,7 +496,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p14",
-    title: "月別売上合計",
+    title: "月ごとの売上推移を把握したい",
     description: `月ごとの売上合計金額を求め、月の昇順で表示してください。
 月は数値で表し、カラム名は \`month\`、\`total\` とすること。
 
@@ -529,7 +529,7 @@ export const problems: Problem[] = [
   },
   {
     id: "p15",
-    title: "WITH句（CTE）で部署平均と全体平均を比較",
+    title: "全体平均を上回る部署の平均給与を調べたい",
     description: `部署ごとの平均給与を集計し、全体平均を上回っている部署の名前と平均給与（\`avg_salary\`、整数値）を表示してください。
 
 ### テーブル: employees
@@ -561,7 +561,7 @@ WHERE avg_salary > (SELECT AVG(salary) FROM employees);`,
   // ── HARD ─────────────────────────────────────────────────────────────────
   {
     id: "p16",
-    title: "DENSE_RANK で給与順位",
+    title: "同じ給与の人には同じ順位を付けて飛ばさずに並べたい",
     description: `全従業員の名前・給与と、給与の高い順の順位（\`rank\`）を表示してください。
 同じ給与には同じ順位を付け、次の順位は詰めること。
 
@@ -585,7 +585,7 @@ WHERE avg_salary > (SELECT AVG(salary) FROM employees);`,
   },
   {
     id: "p17",
-    title: "ROW_NUMBER で部署内入社順",
+    title: "部署ごとに入社が早い順で連番を振りたい",
     description: `部署ごとに入社日の早い順で連番（\`entry_order\`）を付け、名前・部署・入社日とともに表示してください。
 連番は各部署で1から始まること。
 
@@ -610,7 +610,7 @@ WHERE avg_salary > (SELECT AVG(salary) FROM employees);`,
   },
   {
     id: "p18",
-    title: "SUM OVER で累積売上",
+    title: "日別の取引ごとにその時点までの累積売上を表示したい",
     description: `売上日・取引金額（\`amount\`）・その時点までの累積売上合計（\`cumulative\`）を、売上日の昇順で表示してください。
 
 ### テーブル: products
@@ -647,7 +647,7 @@ ORDER BY s.sale_date;`,
   },
   {
     id: "p19",
-    title: "LAG で前月比を計算",
+    title: "月次売上の前月比を計算したい",
     description: `月ごとの売上合計（\`total\`）と前月からの差額（\`diff\`）を、月の昇順（\`month\` は数値）で表示してください。
 最初の月の差額は NULL で構いません。
 
@@ -692,7 +692,7 @@ ORDER BY month;`,
   },
   {
     id: "p20",
-    title: "CTE で部署最高給与の従業員を抽出",
+    title: "各部署でトップの給与をもらっている従業員を全員出したい",
     description: `各部署で最も高い給与をもらっている従業員を全員取得し、名前・部署・給与を部署名の昇順で表示してください。
 同給与が複数人いる場合はすべて含めること。
 
@@ -727,7 +727,7 @@ ORDER BY e.department;`,
   // ── MEDIUM (追加) ─────────────────────────────────────────────────────────
   {
     id: "p21",
-    title: "注文実績のある顧客を EXISTS で取得",
+    title: "1回以上注文した顧客だけを名前順で取得したい",
     description: `1件以上注文したことがある顧客の名前を名前の昇順で取得してください。
 
 ### テーブル: customers
@@ -758,7 +758,7 @@ ORDER BY e.department;`,
   },
   {
     id: "p22",
-    title: "部署ごとのメンバーリスト（STRING_AGG）",
+    title: "部署ごとのメンバー名をカンマ区切りで一行にまとめたい",
     description: `部署ごとに所属する従業員名をカンマ区切りで連結した一覧（\`members\`）を、部署名の昇順で表示してください。
 名前は昇順で並べること。
 
@@ -782,7 +782,7 @@ ORDER BY e.department;`,
   },
   {
     id: "p23",
-    title: "FILTER で給与レベル別人数を集計",
+    title: "部署ごとに給与帯別の人数を横並びで集計したい",
     description: `部署ごとに以下の条件で従業員数を集計し、部署名の昇順で表示してください。
 - \`high\`: 給与 80,000円以上
 - \`mid\`: 給与 60,000円以上 80,000円未満
@@ -809,7 +809,7 @@ ORDER BY e.department;`,
   },
   {
     id: "p24",
-    title: "部署別給与統計（最高・最低・平均）",
+    title: "部署ごとの給与の最高・最低・平均をまとめたい",
     description: `部署ごとに最高給与（\`max_salary\`）・最低給与（\`min_salary\`）・平均給与（\`avg_salary\`、整数値）を求め、平均給与の高い順に表示してください。
 
 ### テーブル: employees
@@ -835,7 +835,7 @@ ORDER BY e.department;`,
   // ── HARD (追加) ──────────────────────────────────────────────────────────
   {
     id: "p25",
-    title: "LEAD で翌月売上・差額を表示",
+    title: "月次売上に翌月の数値と差額を並べて表示したい",
     description: `月ごとの売上合計（\`total\`）と翌月の売上合計（\`next_total\`）、その差額（\`diff\`）を月の昇順（\`month\` は数値）で表示してください。
 最終月の \`next_total\` と \`diff\` は NULL で構いません。
 
@@ -863,7 +863,7 @@ ORDER BY month;`,
   },
   {
     id: "p26",
-    title: "NTILE で給与四分位数",
+    title: "従業員を給与の高低で4グループに分けたい",
     description: `全従業員の名前・給与と、給与を昇順に並べたときの四分位グループ（\`quartile\`、1〜4）を表示してください。
 給与の昇順で並べること。
 
@@ -881,7 +881,7 @@ ORDER BY month;`,
   },
   {
     id: "p27",
-    title: "FIRST_VALUE で部署内最高給与者名を付加",
+    title: "各従業員の行に部署の最高給与者の名前を添えたい",
     description: `全従業員の名前・部署・給与と、その従業員が所属する部署の最高給与者の名前（\`top_earner\`）を表示してください。
 部署名・給与の降順で並べること。
 
@@ -899,7 +899,7 @@ ORDER BY month;`,
   },
   {
     id: "p28",
-    title: "PERCENT_RANK で給与パーセンタイル",
+    title: "各従業員の給与が全体の何パーセントに位置するか知りたい",
     description: `全従業員の名前・給与と、給与の昇順パーセンタイル（\`percentile\`、0〜100の整数）を表示してください。
 給与の昇順で並べること。
 
@@ -917,7 +917,7 @@ ORDER BY month;`,
   },
   {
     id: "p29",
-    title: "再帰 CTE で部下を全員取得",
+    title: "特定の管理職の直属・間接の部下を全員取得したい",
     description: `技術部長（id = 2）の直属・間接を含むすべての部下の名前・役職・階層の深さ（\`depth\`）を取得してください。
 技術部長自身の depth は 1 とし、depth・名前の昇順で表示すること。
 
@@ -949,7 +949,7 @@ SELECT name, title, depth FROM subordinates ORDER BY depth, name;`,
   },
   {
     id: "p30",
-    title: "ROWS BETWEEN で3ヶ月移動平均",
+    title: "直近3ヶ月の移動平均で売上のならしを見たい",
     description: `月ごとの売上合計（\`total\`）と、当月を含む直近3ヶ月の移動平均（\`moving_avg_3m\`、整数値）を月の昇順で表示してください。
 
 ### テーブル: products / sales（PRODUCT_SCHEMA）`,
@@ -974,7 +974,7 @@ ORDER BY month;`,
   },
   {
     id: "p31",
-    title: "EXCEPT で注文なし顧客を取得",
+    title: "全顧客から注文実績のある顧客を差し引いて未注文顧客を出したい",
     description: `一度も注文していない顧客の名前を取得してください。
 EXCEPT を使って解いてください。名前の昇順で表示すること。
 
@@ -994,7 +994,7 @@ ORDER BY name;`,
   },
   {
     id: "p32",
-    title: "複数 CTE：月別売上が商品平均を超える月を抽出",
+    title: "商品ごとに月別売上がその商品の平均を上回る月を探したい",
     description: `各商品の月別売上合計を求め、その商品の全月平均を上回っている月だけを商品名・月・売上合計で表示してください。
 商品名・月の昇順で並べること。
 
@@ -1025,7 +1025,7 @@ ORDER BY ms.name, ms.month;`,
   },
   {
     id: "p33",
-    title: "自己 JOIN で同入社年の従業員ペアを取得",
+    title: "同じ年に入社した従業員のペアを重複なく一覧したい",
     description: `同じ年に入社した従業員のペア（\`emp1\`・\`emp2\`）と入社年（\`hire_year\`）を取得してください。
 同一人物のペアや重複（A-B と B-A）は除き、hire_year・emp1 の昇順で表示すること。
 
@@ -1049,7 +1049,7 @@ ORDER BY hire_year, emp1;`,
   },
   {
     id: "p34",
-    title: "相関サブクエリで各顧客の最新注文を取得",
+    title: "顧客ごとに最後に注文した商品と日付を取得したい",
     description: `注文実績がある顧客ごとに、最も新しい注文の顧客名・商品名・注文日を取得してください。
 顧客名の昇順で表示すること。
 
@@ -1072,7 +1072,7 @@ ORDER BY c.name;`,
   },
   {
     id: "p35",
-    title: "CUME_DIST で商品売上の累積分布",
+    title: "商品の売上が全体のどの位置にあるか分布を見たい",
     description: `全期間での商品別売上合計（\`total_sales\`）と、売上の低い方からの累積分布（\`cume_dist_pct\`、0〜100の整数）を表示してください。
 売上合計の昇順で並べること。
 
@@ -1098,7 +1098,7 @@ ORDER BY total_sales;`,
   },
   {
     id: "p36",
-    title: "再帰 CTE で組織ツリーのパスを生成",
+    title: "全社員のルートからの組織パスと階層の深さを表示したい",
     description: `全社員の名前・役職・階層の深さ（\`depth\`、代表取締役=0）と、ルートからのパス（\`path\`、例: \`山本 隆 > 田中 太郎 > 佐藤 三郎\`）を表示してください。
 path の昇順で並べること。
 
@@ -1131,7 +1131,7 @@ SELECT name, title, depth, path FROM hierarchy ORDER BY path;`,
   },
   {
     id: "p37",
-    title: "LATERAL JOIN で顧客ごとの最新注文を取得",
+    title: "顧客ごとに直近の注文1件を効率よく取得したい",
     description: `注文実績がある顧客ごとに、最も新しい注文の顧客名・商品名・金額・注文日を取得してください。
 顧客名の昇順で表示すること。LATERAL を使って解いてください。
 
@@ -1158,7 +1158,7 @@ ORDER BY c.name;`,
   },
   {
     id: "p38",
-    title: "PERCENTILE_CONT で部署別給与中央値",
+    title: "部署ごとの給与の中央値を求めたい",
     description: `部署ごとの給与中央値（\`median_salary\`、整数値）を部署名の昇順で表示してください。
 
 ### テーブル: employees`,
@@ -1178,7 +1178,7 @@ ORDER BY department;`,
   },
   {
     id: "p39",
-    title: "月別・カテゴリ別売上ランキング",
+    title: "月ごとにカテゴリの売上順位を付けたい",
     description: `月ごと・カテゴリごとの売上合計（\`total\`）と、その月内でのカテゴリ売上順位（\`rank\`）を月・順位の昇順で表示してください。
 
 ### テーブル: products / sales（PRODUCT_SCHEMA）`,
@@ -1204,7 +1204,7 @@ ORDER BY month, rank;`,
   },
   {
     id: "p40",
-    title: "複合 CTE：部署別の入社年度別採用数と累積採用数",
+    title: "部署ごとの年度別採用数と累積採用数を確認したい",
     description: `部署ごと・入社年ごとの採用人数（\`hired\`）と、その部署内での累積採用人数（\`cumulative_count\`）を部署名・入社年の昇順で表示してください。
 
 ### テーブル: employees`,
