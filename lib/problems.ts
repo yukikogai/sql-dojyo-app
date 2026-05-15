@@ -839,7 +839,21 @@ ORDER BY e.department;`,
     description: `月ごとの売上合計（\`total\`）と翌月の売上合計（\`next_total\`）、その差額（\`diff\`）を月の昇順（\`month\` は数値）で表示してください。
 最終月の \`next_total\` と \`diff\` は NULL で構いません。
 
-### テーブル: products / sales（PRODUCT_SCHEMA）`,
+### テーブル: products
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 商品ID |
+| name | TEXT | 商品名 |
+| category | TEXT | カテゴリ |
+| price | INTEGER | 単価 |
+
+### テーブル: sales
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 売上ID |
+| product_id | INTEGER | 商品ID (FK) |
+| quantity | INTEGER | 数量 |
+| sale_date | DATE | 売上日 |`,
     difficulty: "hard",
     schema: PRODUCT_SCHEMA,
     solution: `WITH monthly AS (
@@ -867,7 +881,14 @@ ORDER BY month;`,
     description: `全従業員の名前・給与と、給与を昇順に並べたときの四分位グループ（\`quartile\`、1〜4）を表示してください。
 給与の昇順で並べること。
 
-### テーブル: employees`,
+### テーブル: employees
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 従業員ID |
+| name | TEXT | 氏名 |
+| department | TEXT | 部署 |
+| salary | INTEGER | 給与 |
+| hire_date | DATE | 入社日 |`,
     difficulty: "hard",
     schema: EMPLOYEE_SCHEMA,
     solution:
@@ -885,7 +906,14 @@ ORDER BY month;`,
     description: `全従業員の名前・部署・給与と、その従業員が所属する部署の最高給与者の名前（\`top_earner\`）を表示してください。
 部署名・給与の降順で並べること。
 
-### テーブル: employees`,
+### テーブル: employees
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 従業員ID |
+| name | TEXT | 氏名 |
+| department | TEXT | 部署 |
+| salary | INTEGER | 給与 |
+| hire_date | DATE | 入社日 |`,
     difficulty: "hard",
     schema: EMPLOYEE_SCHEMA,
     solution:
@@ -903,7 +931,14 @@ ORDER BY month;`,
     description: `全従業員の名前・給与と、給与の昇順パーセンタイル（\`percentile\`、0〜100の整数）を表示してください。
 給与の昇順で並べること。
 
-### テーブル: employees`,
+### テーブル: employees
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 従業員ID |
+| name | TEXT | 氏名 |
+| department | TEXT | 部署 |
+| salary | INTEGER | 給与 |
+| hire_date | DATE | 入社日 |`,
     difficulty: "hard",
     schema: EMPLOYEE_SCHEMA,
     solution:
@@ -952,7 +987,21 @@ SELECT name, title, depth FROM subordinates ORDER BY depth, name;`,
     title: "直近3ヶ月の移動平均で売上のならしを見たい",
     description: `月ごとの売上合計（\`total\`）と、当月を含む直近3ヶ月の移動平均（\`moving_avg_3m\`、整数値）を月の昇順で表示してください。
 
-### テーブル: products / sales（PRODUCT_SCHEMA）`,
+### テーブル: products
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 商品ID |
+| name | TEXT | 商品名 |
+| category | TEXT | カテゴリ |
+| price | INTEGER | 単価 |
+
+### テーブル: sales
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 売上ID |
+| product_id | INTEGER | 商品ID (FK) |
+| quantity | INTEGER | 数量 |
+| sale_date | DATE | 売上日 |`,
     difficulty: "hard",
     schema: PRODUCT_SCHEMA,
     solution: `WITH monthly AS (
@@ -978,7 +1027,21 @@ ORDER BY month;`,
     description: `一度も注文していない顧客の名前を取得してください。
 EXCEPT を使って解いてください。名前の昇順で表示すること。
 
-### テーブル: customers / orders（ORDER_SCHEMA）`,
+### テーブル: customers
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 顧客ID |
+| name | TEXT | 顧客名 |
+| email | TEXT | メールアドレス |
+
+### テーブル: orders
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 注文ID |
+| customer_id | INTEGER | 顧客ID (FK) |
+| product | TEXT | 商品名 |
+| amount | INTEGER | 金額 |
+| order_date | DATE | 注文日 |`,
     difficulty: "hard",
     schema: ORDER_SCHEMA,
     solution: `SELECT name FROM customers
@@ -998,7 +1061,21 @@ ORDER BY name;`,
     description: `各商品の月別売上合計を求め、その商品の全月平均を上回っている月だけを商品名・月・売上合計で表示してください。
 商品名・月の昇順で並べること。
 
-### テーブル: products / sales（PRODUCT_SCHEMA）`,
+### テーブル: products
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 商品ID |
+| name | TEXT | 商品名 |
+| category | TEXT | カテゴリ |
+| price | INTEGER | 単価 |
+
+### テーブル: sales
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 売上ID |
+| product_id | INTEGER | 商品ID (FK) |
+| quantity | INTEGER | 数量 |
+| sale_date | DATE | 売上日 |`,
     difficulty: "hard",
     schema: PRODUCT_SCHEMA,
     solution: `WITH monthly_sales AS (
@@ -1029,7 +1106,14 @@ ORDER BY ms.name, ms.month;`,
     description: `同じ年に入社した従業員のペア（\`emp1\`・\`emp2\`）と入社年（\`hire_year\`）を取得してください。
 同一人物のペアや重複（A-B と B-A）は除き、hire_year・emp1 の昇順で表示すること。
 
-### テーブル: employees`,
+### テーブル: employees
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 従業員ID |
+| name | TEXT | 氏名 |
+| department | TEXT | 部署 |
+| salary | INTEGER | 給与 |
+| hire_date | DATE | 入社日 |`,
     difficulty: "hard",
     schema: EMPLOYEE_SCHEMA,
     solution: `SELECT e1.name AS emp1, e2.name AS emp2,
@@ -1053,7 +1137,21 @@ ORDER BY hire_year, emp1;`,
     description: `注文実績がある顧客ごとに、最も新しい注文の顧客名・商品名・注文日を取得してください。
 顧客名の昇順で表示すること。
 
-### テーブル: customers / orders（ORDER_SCHEMA）`,
+### テーブル: customers
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 顧客ID |
+| name | TEXT | 顧客名 |
+| email | TEXT | メールアドレス |
+
+### テーブル: orders
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 注文ID |
+| customer_id | INTEGER | 顧客ID (FK) |
+| product | TEXT | 商品名 |
+| amount | INTEGER | 金額 |
+| order_date | DATE | 注文日 |`,
     difficulty: "hard",
     schema: ORDER_SCHEMA,
     solution: `SELECT c.name, o.product, o.order_date
@@ -1076,7 +1174,21 @@ ORDER BY c.name;`,
     description: `全期間での商品別売上合計（\`total_sales\`）と、売上の低い方からの累積分布（\`cume_dist_pct\`、0〜100の整数）を表示してください。
 売上合計の昇順で並べること。
 
-### テーブル: products / sales（PRODUCT_SCHEMA）`,
+### テーブル: products
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 商品ID |
+| name | TEXT | 商品名 |
+| category | TEXT | カテゴリ |
+| price | INTEGER | 単価 |
+
+### テーブル: sales
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 売上ID |
+| product_id | INTEGER | 商品ID (FK) |
+| quantity | INTEGER | 数量 |
+| sale_date | DATE | 売上日 |`,
     difficulty: "hard",
     schema: PRODUCT_SCHEMA,
     solution: `WITH product_sales AS (
@@ -1135,7 +1247,21 @@ SELECT name, title, depth, path FROM hierarchy ORDER BY path;`,
     description: `注文実績がある顧客ごとに、最も新しい注文の顧客名・商品名・金額・注文日を取得してください。
 顧客名の昇順で表示すること。LATERAL を使って解いてください。
 
-### テーブル: customers / orders（ORDER_SCHEMA）`,
+### テーブル: customers
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 顧客ID |
+| name | TEXT | 顧客名 |
+| email | TEXT | メールアドレス |
+
+### テーブル: orders
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 注文ID |
+| customer_id | INTEGER | 顧客ID (FK) |
+| product | TEXT | 商品名 |
+| amount | INTEGER | 金額 |
+| order_date | DATE | 注文日 |`,
     difficulty: "hard",
     schema: ORDER_SCHEMA,
     solution: `SELECT c.name, latest.product, latest.amount, latest.order_date
@@ -1161,7 +1287,14 @@ ORDER BY c.name;`,
     title: "部署ごとの給与の中央値を求めたい",
     description: `部署ごとの給与中央値（\`median_salary\`、整数値）を部署名の昇順で表示してください。
 
-### テーブル: employees`,
+### テーブル: employees
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 従業員ID |
+| name | TEXT | 氏名 |
+| department | TEXT | 部署 |
+| salary | INTEGER | 給与 |
+| hire_date | DATE | 入社日 |`,
     difficulty: "hard",
     schema: EMPLOYEE_SCHEMA,
     solution: `SELECT department,
@@ -1181,7 +1314,21 @@ ORDER BY department;`,
     title: "月ごとにカテゴリの売上順位を付けたい",
     description: `月ごと・カテゴリごとの売上合計（\`total\`）と、その月内でのカテゴリ売上順位（\`rank\`）を月・順位の昇順で表示してください。
 
-### テーブル: products / sales（PRODUCT_SCHEMA）`,
+### テーブル: products
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 商品ID |
+| name | TEXT | 商品名 |
+| category | TEXT | カテゴリ |
+| price | INTEGER | 単価 |
+
+### テーブル: sales
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 売上ID |
+| product_id | INTEGER | 商品ID (FK) |
+| quantity | INTEGER | 数量 |
+| sale_date | DATE | 売上日 |`,
     difficulty: "hard",
     schema: PRODUCT_SCHEMA,
     solution: `WITH monthly_category AS (
@@ -1207,7 +1354,14 @@ ORDER BY month, rank;`,
     title: "部署ごとの年度別採用数と累積採用数を確認したい",
     description: `部署ごと・入社年ごとの採用人数（\`hired\`）と、その部署内での累積採用人数（\`cumulative_count\`）を部署名・入社年の昇順で表示してください。
 
-### テーブル: employees`,
+### テーブル: employees
+| カラム | 型 | 説明 |
+|--------|-----|------|
+| id | INTEGER | 従業員ID |
+| name | TEXT | 氏名 |
+| department | TEXT | 部署 |
+| salary | INTEGER | 給与 |
+| hire_date | DATE | 入社日 |`,
     difficulty: "hard",
     schema: EMPLOYEE_SCHEMA,
     solution: `WITH hire_stats AS (
