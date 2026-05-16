@@ -1353,6 +1353,7 @@ ORDER BY month, rank;`,
     id: "p40",
     title: "部署ごとの年度別採用数と累積採用数を確認したい",
     description: `部署ごと・入社年ごとの採用人数（\`hired\`）と、その部署内での累積採用人数（\`cumulative_count\`）を部署名・入社年の昇順で表示してください。
+入社年のカラム名は \`hire_year\` とすること。
 
 ### テーブル: employees
 | カラム | 型 | 説明 |
